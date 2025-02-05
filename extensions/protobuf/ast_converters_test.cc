@@ -31,6 +31,7 @@
 #include "absl/types/variant.h"
 #include "base/ast_internal/ast_impl.h"
 #include "base/ast_internal/expr.h"
+#include "common/expr.h"
 #include "internal/proto_matchers.h"
 #include "internal/testing.h"
 #include "parser/options.h"
@@ -793,6 +794,23 @@ TEST_P(ConversionRoundTripTest, ParsedExprCopyable) {
                        CreateAstFromParsedExpr(parsed_expr));
 
   const auto& impl = ast_internal::AstImpl::CastFromPublicAst(*ast);
+
+  EXPECT_THAT(CreateCheckedExprFromAst(impl),
+              StatusIs(absl::StatusCode::kInvalidArgument,
+                       HasSubstr("AST is not type-checked")));
+  EXPECT_THAT(CreateParsedExprFromAst(impl),
+              IsOkAndHolds(EqualsProto(parsed_expr)));
+}
+
+TEST_P(ConversionRoundTripTest, ExprClonable) {
+  ASSERT_OK_AND_ASSIGN(ParsedExprPb parsed_expr,
+                       Parse(GetParam().expr, "<input>", options_));
+
+  ASSERT_OK_AND_ASSIGN(std::unique_ptr<Ast> ast,
+                       CreateAstFromParsedExpr(parsed_expr));
+
+  auto& impl = ast_internal::AstImpl::CastFromPublicAst(*ast);
+  impl.root_expr() = CloneExpr(impl.root_expr());
 
   EXPECT_THAT(CreateCheckedExprFromAst(impl),
               StatusIs(absl::StatusCode::kInvalidArgument,

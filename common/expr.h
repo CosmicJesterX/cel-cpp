@@ -48,6 +48,9 @@ class ComprehensionExpr;
 
 inline constexpr absl::string_view kAccumulatorVariableName = "__result__";
 
+// Returns a deep copy of the given expression node.
+Expr CloneExpr(const Expr& expr);
+
 bool operator==(const Expr& lhs, const Expr& rhs);
 
 inline bool operator!=(const Expr& lhs, const Expr& rhs) {

@@ -76,6 +76,7 @@ cc_test(
         ":ast_converters",
         "//base/ast_internal:ast_impl",
         "//base/ast_internal:expr",
+        "//common:expr",
         "//internal:proto_matchers",
         "//internal:testing",
         "//parser",
