@@ -55,116 +55,116 @@ struct CustomListValueDispatcher;
 using CustomListValueContent = CustomValueContent;
 
 struct CustomListValueDispatcher {
-  using GetTypeId = NativeTypeId (*)(
-      absl::Nonnull<const CustomListValueDispatcher*> dispatcher,
+  using GetTypeId =
+      NativeTypeId (*)(const CustomListValueDispatcher* absl_nonnull dispatcher,
+                       CustomListValueContent content);
+
+  using GetArena = google::protobuf::Arena* absl_nullable (*)(
+      const CustomListValueDispatcher* absl_nonnull dispatcher,
       CustomListValueContent content);
 
-  using GetArena = absl::Nullable<google::protobuf::Arena*> (*)(
-      absl::Nonnull<const CustomListValueDispatcher*> dispatcher,
-      CustomListValueContent content);
-
-  using DebugString = std::string (*)(
-      absl::Nonnull<const CustomListValueDispatcher*> dispatcher,
-      CustomListValueContent content);
+  using DebugString =
+      std::string (*)(const CustomListValueDispatcher* absl_nonnull dispatcher,
+                      CustomListValueContent content);
 
   using SerializeTo = absl::Status (*)(
-      absl::Nonnull<const CustomListValueDispatcher*> dispatcher,
+      const CustomListValueDispatcher* absl_nonnull dispatcher,
       CustomListValueContent content,
-      absl::Nonnull<const google::protobuf::DescriptorPool*> descriptor_pool,
-      absl::Nonnull<google::protobuf::MessageFactory*> message_factory,
-      absl::Nonnull<google::protobuf::io::ZeroCopyOutputStream*> output);
+      const google::protobuf::DescriptorPool* absl_nonnull descriptor_pool,
+      google::protobuf::MessageFactory* absl_nonnull message_factory,
+      google::protobuf::io::ZeroCopyOutputStream* absl_nonnull output);
 
   using ConvertToJsonArray = absl::Status (*)(
-      absl::Nonnull<const CustomListValueDispatcher*> dispatcher,
+      const CustomListValueDispatcher* absl_nonnull dispatcher,
       CustomListValueContent content,
-      absl::Nonnull<const google::protobuf::DescriptorPool*> descriptor_pool,
-      absl::Nonnull<google::protobuf::MessageFactory*> message_factory,
-      absl::Nonnull<google::protobuf::Message*> json);
+      const google::protobuf::DescriptorPool* absl_nonnull descriptor_pool,
+      google::protobuf::MessageFactory* absl_nonnull message_factory,
+      google::protobuf::Message* absl_nonnull json);
 
   using Equal = absl::Status (*)(
-      absl::Nonnull<const CustomListValueDispatcher*> dispatcher,
+      const CustomListValueDispatcher* absl_nonnull dispatcher,
       CustomListValueContent content, const ListValue& other,
-      absl::Nonnull<const google::protobuf::DescriptorPool*> descriptor_pool,
-      absl::Nonnull<google::protobuf::MessageFactory*> message_factory,
-      absl::Nonnull<google::protobuf::Arena*> arena, absl::Nonnull<Value*> result);
+      const google::protobuf::DescriptorPool* absl_nonnull descriptor_pool,
+      google::protobuf::MessageFactory* absl_nonnull message_factory,
+      google::protobuf::Arena* absl_nonnull arena, Value* absl_nonnull result);
 
   using IsZeroValue =
-      bool (*)(absl::Nonnull<const CustomListValueDispatcher*> dispatcher,
+      bool (*)(const CustomListValueDispatcher* absl_nonnull dispatcher,
                CustomListValueContent content);
 
   using IsEmpty =
-      bool (*)(absl::Nonnull<const CustomListValueDispatcher*> dispatcher,
+      bool (*)(const CustomListValueDispatcher* absl_nonnull dispatcher,
                CustomListValueContent content);
 
   using Size =
-      size_t (*)(absl::Nonnull<const CustomListValueDispatcher*> dispatcher,
+      size_t (*)(const CustomListValueDispatcher* absl_nonnull dispatcher,
                  CustomListValueContent content);
 
   using Get = absl::Status (*)(
-      absl::Nonnull<const CustomListValueDispatcher*> dispatcher,
+      const CustomListValueDispatcher* absl_nonnull dispatcher,
       CustomListValueContent content, size_t index,
-      absl::Nonnull<const google::protobuf::DescriptorPool*> descriptor_pool,
-      absl::Nonnull<google::protobuf::MessageFactory*> message_factory,
-      absl::Nonnull<google::protobuf::Arena*> arena, absl::Nonnull<Value*> result);
+      const google::protobuf::DescriptorPool* absl_nonnull descriptor_pool,
+      google::protobuf::MessageFactory* absl_nonnull message_factory,
+      google::protobuf::Arena* absl_nonnull arena, Value* absl_nonnull result);
 
   using ForEach = absl::Status (*)(
-      absl::Nonnull<const CustomListValueDispatcher*> dispatcher,
+      const CustomListValueDispatcher* absl_nonnull dispatcher,
       CustomListValueContent content,
       absl::FunctionRef<absl::StatusOr<bool>(size_t, const Value&)> callback,
-      absl::Nonnull<const google::protobuf::DescriptorPool*> descriptor_pool,
-      absl::Nonnull<google::protobuf::MessageFactory*> message_factory,
-      absl::Nonnull<google::protobuf::Arena*> arena);
+      const google::protobuf::DescriptorPool* absl_nonnull descriptor_pool,
+      google::protobuf::MessageFactory* absl_nonnull message_factory,
+      google::protobuf::Arena* absl_nonnull arena);
 
-  using NewIterator = absl::StatusOr<absl::Nonnull<ValueIteratorPtr>> (*)(
-      absl::Nonnull<const CustomListValueDispatcher*> dispatcher,
+  using NewIterator = absl::StatusOr<absl_nonnull ValueIteratorPtr> (*)(
+      const CustomListValueDispatcher* absl_nonnull dispatcher,
       CustomListValueContent content);
 
   using Contains = absl::Status (*)(
-      absl::Nonnull<const CustomListValueDispatcher*> dispatcher,
+      const CustomListValueDispatcher* absl_nonnull dispatcher,
       CustomListValueContent content, const Value& other,
-      absl::Nonnull<const google::protobuf::DescriptorPool*> descriptor_pool,
-      absl::Nonnull<google::protobuf::MessageFactory*> message_factory,
-      absl::Nonnull<google::protobuf::Arena*> arena, absl::Nonnull<Value*> result);
+      const google::protobuf::DescriptorPool* absl_nonnull descriptor_pool,
+      google::protobuf::MessageFactory* absl_nonnull message_factory,
+      google::protobuf::Arena* absl_nonnull arena, Value* absl_nonnull result);
 
   using Clone = CustomListValue (*)(
-      absl::Nonnull<const CustomListValueDispatcher*> dispatcher,
-      CustomListValueContent content, absl::Nonnull<google::protobuf::Arena*> arena);
+      const CustomListValueDispatcher* absl_nonnull dispatcher,
+      CustomListValueContent content, google::protobuf::Arena* absl_nonnull arena);
 
-  absl::Nonnull<GetTypeId> get_type_id;
+  absl_nonnull GetTypeId get_type_id;
 
-  absl::Nonnull<GetArena> get_arena;
+  absl_nonnull GetArena get_arena;
 
   // If null, simply returns "list".
-  absl::Nullable<DebugString> debug_string = nullptr;
+  absl_nullable DebugString debug_string = nullptr;
 
   // If null, attempts to serialize results in an UNIMPLEMENTED error.
-  absl::Nullable<SerializeTo> serialize_to = nullptr;
+  absl_nullable SerializeTo serialize_to = nullptr;
 
   // If null, attempts to convert to JSON results in an UNIMPLEMENTED error.
-  absl::Nullable<ConvertToJsonArray> convert_to_json_array = nullptr;
+  absl_nullable ConvertToJsonArray convert_to_json_array = nullptr;
 
   // If null, an nonoptimal fallback implementation for equality is used.
-  absl::Nullable<Equal> equal = nullptr;
+  absl_nullable Equal equal = nullptr;
 
-  absl::Nonnull<IsZeroValue> is_zero_value;
+  absl_nonnull IsZeroValue is_zero_value;
 
   // If null, `size(...) == 0` is used.
-  absl::Nullable<IsEmpty> is_empty = nullptr;
+  absl_nullable IsEmpty is_empty = nullptr;
 
-  absl::Nonnull<Size> size;
+  absl_nonnull Size size;
 
-  absl::Nonnull<Get> get;
-
-  // If null, a fallback implementation using `size` and `get` is used.
-  absl::Nullable<ForEach> for_each = nullptr;
+  absl_nonnull Get get;
 
   // If null, a fallback implementation using `size` and `get` is used.
-  absl::Nullable<NewIterator> new_iterator = nullptr;
+  absl_nullable ForEach for_each = nullptr;
+
+  // If null, a fallback implementation using `size` and `get` is used.
+  absl_nullable NewIterator new_iterator = nullptr;
 
   // If null, a fallback implementation is used.
-  absl::Nullable<Contains> contains = nullptr;
+  absl_nullable Contains contains = nullptr;
 
-  absl::Nonnull<Clone> clone;
+  absl_nonnull Clone clone;
 };
 
 class CustomListValueInterface {
@@ -188,27 +188,27 @@ class CustomListValueInterface {
   friend class CustomListValue;
   friend absl::Status common_internal::ListValueEqual(
       const CustomListValueInterface& lhs, const ListValue& rhs,
-      absl::Nonnull<const google::protobuf::DescriptorPool*> descriptor_pool,
-      absl::Nonnull<google::protobuf::MessageFactory*> message_factory,
-      absl::Nonnull<google::protobuf::Arena*> arena, absl::Nonnull<Value*> result);
+      const google::protobuf::DescriptorPool* absl_nonnull descriptor_pool,
+      google::protobuf::MessageFactory* absl_nonnull message_factory,
+      google::protobuf::Arena* absl_nonnull arena, Value* absl_nonnull result);
 
   virtual std::string DebugString() const = 0;
 
   virtual absl::Status SerializeTo(
-      absl::Nonnull<const google::protobuf::DescriptorPool*> descriptor_pool,
-      absl::Nonnull<google::protobuf::MessageFactory*> message_factory,
-      absl::Nonnull<google::protobuf::io::ZeroCopyOutputStream*> output) const;
+      const google::protobuf::DescriptorPool* absl_nonnull descriptor_pool,
+      google::protobuf::MessageFactory* absl_nonnull message_factory,
+      google::protobuf::io::ZeroCopyOutputStream* absl_nonnull output) const;
 
   virtual absl::Status ConvertToJsonArray(
-      absl::Nonnull<const google::protobuf::DescriptorPool*> descriptor_pool,
-      absl::Nonnull<google::protobuf::MessageFactory*> message_factory,
-      absl::Nonnull<google::protobuf::Message*> json) const = 0;
+      const google::protobuf::DescriptorPool* absl_nonnull descriptor_pool,
+      google::protobuf::MessageFactory* absl_nonnull message_factory,
+      google::protobuf::Message* absl_nonnull json) const = 0;
 
   virtual absl::Status Equal(
       const ListValue& other,
-      absl::Nonnull<const google::protobuf::DescriptorPool*> descriptor_pool,
-      absl::Nonnull<google::protobuf::MessageFactory*> message_factory,
-      absl::Nonnull<google::protobuf::Arena*> arena, absl::Nonnull<Value*> result) const;
+      const google::protobuf::DescriptorPool* absl_nonnull descriptor_pool,
+      google::protobuf::MessageFactory* absl_nonnull message_factory,
+      google::protobuf::Arena* absl_nonnull arena, Value* absl_nonnull result) const;
 
   virtual bool IsZeroValue() const { return IsEmpty(); }
 
@@ -217,33 +217,31 @@ class CustomListValueInterface {
   virtual size_t Size() const = 0;
 
   virtual absl::Status Get(
-      size_t index,
-      absl::Nonnull<const google::protobuf::DescriptorPool*> descriptor_pool,
-      absl::Nonnull<google::protobuf::MessageFactory*> message_factory,
-      absl::Nonnull<google::protobuf::Arena*> arena,
-      absl::Nonnull<Value*> result) const = 0;
+      size_t index, const google::protobuf::DescriptorPool* absl_nonnull descriptor_pool,
+      google::protobuf::MessageFactory* absl_nonnull message_factory,
+      google::protobuf::Arena* absl_nonnull arena, Value* absl_nonnull result) const = 0;
 
   virtual absl::Status ForEach(
       ForEachWithIndexCallback callback,
-      absl::Nonnull<const google::protobuf::DescriptorPool*> descriptor_pool,
-      absl::Nonnull<google::protobuf::MessageFactory*> message_factory,
-      absl::Nonnull<google::protobuf::Arena*> arena) const;
+      const google::protobuf::DescriptorPool* absl_nonnull descriptor_pool,
+      google::protobuf::MessageFactory* absl_nonnull message_factory,
+      google::protobuf::Arena* absl_nonnull arena) const;
 
-  virtual absl::StatusOr<absl::Nonnull<ValueIteratorPtr>> NewIterator() const;
+  virtual absl::StatusOr<absl_nonnull ValueIteratorPtr> NewIterator() const;
 
   virtual absl::Status Contains(
       const Value& other,
-      absl::Nonnull<const google::protobuf::DescriptorPool*> descriptor_pool,
-      absl::Nonnull<google::protobuf::MessageFactory*> message_factory,
-      absl::Nonnull<google::protobuf::Arena*> arena, absl::Nonnull<Value*> result) const;
+      const google::protobuf::DescriptorPool* absl_nonnull descriptor_pool,
+      google::protobuf::MessageFactory* absl_nonnull message_factory,
+      google::protobuf::Arena* absl_nonnull arena, Value* absl_nonnull result) const;
 
-  virtual CustomListValue Clone(absl::Nonnull<google::protobuf::Arena*> arena) const = 0;
+  virtual CustomListValue Clone(google::protobuf::Arena* absl_nonnull arena) const = 0;
 
   virtual NativeTypeId GetNativeTypeId() const = 0;
 
   struct Content {
-    absl::Nonnull<const CustomListValueInterface*> interface;
-    absl::Nonnull<google::protobuf::Arena*> arena;
+    const CustomListValueInterface* absl_nonnull interface;
+    google::protobuf::Arena* absl_nonnull arena;
   };
 };
 
@@ -257,7 +255,7 @@ class CustomListValueInterface {
 // used when you know exactly what you are doing. When in doubt, just implement
 // CustomListValueInterface.
 CustomListValue UnsafeCustomListValue(
-    absl::Nonnull<const CustomListValueDispatcher*> dispatcher
+    const CustomListValueDispatcher* absl_nonnull dispatcher
         ABSL_ATTRIBUTE_LIFETIME_BOUND,
     CustomListValueContent content);
 
@@ -269,9 +267,9 @@ class CustomListValue final
   // Constructs a custom list value from an implementation of
   // `CustomListValueInterface` `interface` whose lifetime is tied to that of
   // the arena `arena`.
-  CustomListValue(absl::Nonnull<const CustomListValueInterface*>
-                      interface ABSL_ATTRIBUTE_LIFETIME_BOUND,
-                  absl::Nonnull<google::protobuf::Arena*> arena
+  CustomListValue(const CustomListValueInterface* absl_nonnull
+                  interface ABSL_ATTRIBUTE_LIFETIME_BOUND,
+                  google::protobuf::Arena* absl_nonnull arena
                       ABSL_ATTRIBUTE_LIFETIME_BOUND) {
     ABSL_DCHECK(interface != nullptr);
     ABSL_DCHECK(arena != nullptr);
@@ -295,32 +293,32 @@ class CustomListValue final
 
   // See Value::SerializeTo().
   absl::Status SerializeTo(
-      absl::Nonnull<const google::protobuf::DescriptorPool*> descriptor_pool,
-      absl::Nonnull<google::protobuf::MessageFactory*> message_factory,
-      absl::Nonnull<google::protobuf::io::ZeroCopyOutputStream*> output) const;
+      const google::protobuf::DescriptorPool* absl_nonnull descriptor_pool,
+      google::protobuf::MessageFactory* absl_nonnull message_factory,
+      google::protobuf::io::ZeroCopyOutputStream* absl_nonnull output) const;
 
   // See Value::ConvertToJson().
   absl::Status ConvertToJson(
-      absl::Nonnull<const google::protobuf::DescriptorPool*> descriptor_pool,
-      absl::Nonnull<google::protobuf::MessageFactory*> message_factory,
-      absl::Nonnull<google::protobuf::Message*> json) const;
+      const google::protobuf::DescriptorPool* absl_nonnull descriptor_pool,
+      google::protobuf::MessageFactory* absl_nonnull message_factory,
+      google::protobuf::Message* absl_nonnull json) const;
 
   // See Value::ConvertToJsonArray().
   absl::Status ConvertToJsonArray(
-      absl::Nonnull<const google::protobuf::DescriptorPool*> descriptor_pool,
-      absl::Nonnull<google::protobuf::MessageFactory*> message_factory,
-      absl::Nonnull<google::protobuf::Message*> json) const;
+      const google::protobuf::DescriptorPool* absl_nonnull descriptor_pool,
+      google::protobuf::MessageFactory* absl_nonnull message_factory,
+      google::protobuf::Message* absl_nonnull json) const;
 
-  absl::Status Equal(
-      const Value& other,
-      absl::Nonnull<const google::protobuf::DescriptorPool*> descriptor_pool,
-      absl::Nonnull<google::protobuf::MessageFactory*> message_factory,
-      absl::Nonnull<google::protobuf::Arena*> arena, absl::Nonnull<Value*> result) const;
+  absl::Status Equal(const Value& other,
+                     const google::protobuf::DescriptorPool* absl_nonnull descriptor_pool,
+                     google::protobuf::MessageFactory* absl_nonnull message_factory,
+                     google::protobuf::Arena* absl_nonnull arena,
+                     Value* absl_nonnull result) const;
   using ListValueMixin::Equal;
 
   bool IsZeroValue() const;
 
-  CustomListValue Clone(absl::Nonnull<google::protobuf::Arena*> arena) const;
+  CustomListValue Clone(google::protobuf::Arena* absl_nonnull arena) const;
 
   bool IsEmpty() const;
 
@@ -328,10 +326,10 @@ class CustomListValue final
 
   // See ListValueInterface::Get for documentation.
   absl::Status Get(size_t index,
-                   absl::Nonnull<const google::protobuf::DescriptorPool*> descriptor_pool,
-                   absl::Nonnull<google::protobuf::MessageFactory*> message_factory,
-                   absl::Nonnull<google::protobuf::Arena*> arena,
-                   absl::Nonnull<Value*> result) const;
+                   const google::protobuf::DescriptorPool* absl_nonnull descriptor_pool,
+                   google::protobuf::MessageFactory* absl_nonnull message_factory,
+                   google::protobuf::Arena* absl_nonnull arena,
+                   Value* absl_nonnull result) const;
   using ListValueMixin::Get;
 
   using ForEachCallback = typename CustomListValueInterface::ForEachCallback;
@@ -341,21 +339,21 @@ class CustomListValue final
 
   absl::Status ForEach(
       ForEachWithIndexCallback callback,
-      absl::Nonnull<const google::protobuf::DescriptorPool*> descriptor_pool,
-      absl::Nonnull<google::protobuf::MessageFactory*> message_factory,
-      absl::Nonnull<google::protobuf::Arena*> arena) const;
+      const google::protobuf::DescriptorPool* absl_nonnull descriptor_pool,
+      google::protobuf::MessageFactory* absl_nonnull message_factory,
+      google::protobuf::Arena* absl_nonnull arena) const;
   using ListValueMixin::ForEach;
 
-  absl::StatusOr<absl::Nonnull<ValueIteratorPtr>> NewIterator() const;
+  absl::StatusOr<absl_nonnull ValueIteratorPtr> NewIterator() const;
 
   absl::Status Contains(
       const Value& other,
-      absl::Nonnull<const google::protobuf::DescriptorPool*> descriptor_pool,
-      absl::Nonnull<google::protobuf::MessageFactory*> message_factory,
-      absl::Nonnull<google::protobuf::Arena*> arena, absl::Nonnull<Value*> result) const;
+      const google::protobuf::DescriptorPool* absl_nonnull descriptor_pool,
+      google::protobuf::MessageFactory* absl_nonnull message_factory,
+      google::protobuf::Arena* absl_nonnull arena, Value* absl_nonnull result) const;
   using ListValueMixin::Contains;
 
-  absl::Nullable<const CustomListValueDispatcher*> dispatcher() const {
+  const CustomListValueDispatcher* absl_nullable dispatcher() const {
     return dispatcher_;
   }
 
@@ -364,7 +362,7 @@ class CustomListValue final
     return content_;
   }
 
-  absl::Nullable<const CustomListValueInterface*> interface() const {
+  const CustomListValueInterface* absl_nullable interface() const {
     if (dispatcher_ == nullptr) {
       return content_.To<CustomListValueInterface::Content>().interface;
     }
@@ -381,11 +379,11 @@ class CustomListValue final
   friend class common_internal::ValueMixin<CustomListValue>;
   friend class common_internal::ListValueMixin<CustomListValue>;
   friend CustomListValue UnsafeCustomListValue(
-      absl::Nonnull<const CustomListValueDispatcher*> dispatcher
+      const CustomListValueDispatcher* absl_nonnull dispatcher
           ABSL_ATTRIBUTE_LIFETIME_BOUND,
       CustomListValueContent content);
 
-  CustomListValue(absl::Nonnull<const CustomListValueDispatcher*> dispatcher,
+  CustomListValue(const CustomListValueDispatcher* absl_nonnull dispatcher,
                   CustomListValueContent content)
       : dispatcher_(dispatcher), content_(content) {
     ABSL_DCHECK(dispatcher != nullptr);
@@ -397,7 +395,7 @@ class CustomListValue final
     ABSL_DCHECK(dispatcher->clone != nullptr);
   }
 
-  absl::Nullable<const CustomListValueDispatcher*> dispatcher_ = nullptr;
+  const CustomListValueDispatcher* absl_nullable dispatcher_ = nullptr;
   CustomListValueContent content_ = CustomListValueContent::Zero();
 };
 
@@ -414,7 +412,7 @@ struct NativeTypeTraits<CustomListValue> final {
 };
 
 inline CustomListValue UnsafeCustomListValue(
-    absl::Nonnull<const CustomListValueDispatcher*> dispatcher
+    const CustomListValueDispatcher* absl_nonnull dispatcher
         ABSL_ATTRIBUTE_LIFETIME_BOUND,
     CustomListValueContent content) {
   return CustomListValue(dispatcher, content);

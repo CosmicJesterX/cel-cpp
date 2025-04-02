@@ -88,28 +88,28 @@ class ListValue final : private common_internal::ListValueMixin<ListValue> {
 
   // See Value::SerializeTo().
   absl::Status SerializeTo(
-      absl::Nonnull<const google::protobuf::DescriptorPool*> descriptor_pool,
-      absl::Nonnull<google::protobuf::MessageFactory*> message_factory,
-      absl::Nonnull<google::protobuf::io::ZeroCopyOutputStream*> output) const;
+      const google::protobuf::DescriptorPool* absl_nonnull descriptor_pool,
+      google::protobuf::MessageFactory* absl_nonnull message_factory,
+      google::protobuf::io::ZeroCopyOutputStream* absl_nonnull output) const;
 
   // See Value::ConvertToJson().
   absl::Status ConvertToJson(
-      absl::Nonnull<const google::protobuf::DescriptorPool*> descriptor_pool,
-      absl::Nonnull<google::protobuf::MessageFactory*> message_factory,
-      absl::Nonnull<google::protobuf::Message*> json) const;
+      const google::protobuf::DescriptorPool* absl_nonnull descriptor_pool,
+      google::protobuf::MessageFactory* absl_nonnull message_factory,
+      google::protobuf::Message* absl_nonnull json) const;
 
   // Like ConvertToJson(), except `json` **MUST** be an instance of
   // `google.protobuf.ListValue`.
   absl::Status ConvertToJsonArray(
-      absl::Nonnull<const google::protobuf::DescriptorPool*> descriptor_pool,
-      absl::Nonnull<google::protobuf::MessageFactory*> message_factory,
-      absl::Nonnull<google::protobuf::Message*> json) const;
+      const google::protobuf::DescriptorPool* absl_nonnull descriptor_pool,
+      google::protobuf::MessageFactory* absl_nonnull message_factory,
+      google::protobuf::Message* absl_nonnull json) const;
 
-  absl::Status Equal(
-      const Value& other,
-      absl::Nonnull<const google::protobuf::DescriptorPool*> descriptor_pool,
-      absl::Nonnull<google::protobuf::MessageFactory*> message_factory,
-      absl::Nonnull<google::protobuf::Arena*> arena, absl::Nonnull<Value*> result) const;
+  absl::Status Equal(const Value& other,
+                     const google::protobuf::DescriptorPool* absl_nonnull descriptor_pool,
+                     google::protobuf::MessageFactory* absl_nonnull message_factory,
+                     google::protobuf::Arena* absl_nonnull arena,
+                     Value* absl_nonnull result) const;
   using ListValueMixin::Equal;
 
   bool IsZeroValue() const;
@@ -120,10 +120,10 @@ class ListValue final : private common_internal::ListValueMixin<ListValue> {
 
   // See ListValueInterface::Get for documentation.
   absl::Status Get(size_t index,
-                   absl::Nonnull<const google::protobuf::DescriptorPool*> descriptor_pool,
-                   absl::Nonnull<google::protobuf::MessageFactory*> message_factory,
-                   absl::Nonnull<google::protobuf::Arena*> arena,
-                   absl::Nonnull<Value*> result) const;
+                   const google::protobuf::DescriptorPool* absl_nonnull descriptor_pool,
+                   google::protobuf::MessageFactory* absl_nonnull message_factory,
+                   google::protobuf::Arena* absl_nonnull arena,
+                   Value* absl_nonnull result) const;
   using ListValueMixin::Get;
 
   using ForEachCallback = typename CustomListValueInterface::ForEachCallback;
@@ -133,18 +133,18 @@ class ListValue final : private common_internal::ListValueMixin<ListValue> {
 
   absl::Status ForEach(
       ForEachWithIndexCallback callback,
-      absl::Nonnull<const google::protobuf::DescriptorPool*> descriptor_pool,
-      absl::Nonnull<google::protobuf::MessageFactory*> message_factory,
-      absl::Nonnull<google::protobuf::Arena*> arena) const;
+      const google::protobuf::DescriptorPool* absl_nonnull descriptor_pool,
+      google::protobuf::MessageFactory* absl_nonnull message_factory,
+      google::protobuf::Arena* absl_nonnull arena) const;
   using ListValueMixin::ForEach;
 
-  absl::StatusOr<absl::Nonnull<ValueIteratorPtr>> NewIterator() const;
+  absl::StatusOr<absl_nonnull ValueIteratorPtr> NewIterator() const;
 
   absl::Status Contains(
       const Value& other,
-      absl::Nonnull<const google::protobuf::DescriptorPool*> descriptor_pool,
-      absl::Nonnull<google::protobuf::MessageFactory*> message_factory,
-      absl::Nonnull<google::protobuf::Arena*> arena, absl::Nonnull<Value*> result) const;
+      const google::protobuf::DescriptorPool* absl_nonnull descriptor_pool,
+      google::protobuf::MessageFactory* absl_nonnull message_factory,
+      google::protobuf::Arena* absl_nonnull arena, Value* absl_nonnull result) const;
   using ListValueMixin::Contains;
 
   // Returns `true` if this value is an instance of a custom list value.

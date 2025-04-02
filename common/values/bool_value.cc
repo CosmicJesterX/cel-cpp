@@ -42,9 +42,9 @@ std::string BoolValue::DebugString() const {
 }
 
 absl::Status BoolValue::SerializeTo(
-    absl::Nonnull<const google::protobuf::DescriptorPool*> descriptor_pool,
-    absl::Nonnull<google::protobuf::MessageFactory*> message_factory,
-    absl::Nonnull<google::protobuf::io::ZeroCopyOutputStream*> output) const {
+    const google::protobuf::DescriptorPool* absl_nonnull descriptor_pool,
+    google::protobuf::MessageFactory* absl_nonnull message_factory,
+    google::protobuf::io::ZeroCopyOutputStream* absl_nonnull output) const {
   ABSL_DCHECK(descriptor_pool != nullptr);
   ABSL_DCHECK(message_factory != nullptr);
   ABSL_DCHECK(output != nullptr);
@@ -60,9 +60,9 @@ absl::Status BoolValue::SerializeTo(
 }
 
 absl::Status BoolValue::ConvertToJson(
-    absl::Nonnull<const google::protobuf::DescriptorPool*> descriptor_pool,
-    absl::Nonnull<google::protobuf::MessageFactory*> message_factory,
-    absl::Nonnull<google::protobuf::Message*> json) const {
+    const google::protobuf::DescriptorPool* absl_nonnull descriptor_pool,
+    google::protobuf::MessageFactory* absl_nonnull message_factory,
+    google::protobuf::Message* absl_nonnull json) const {
   ABSL_DCHECK(descriptor_pool != nullptr);
   ABSL_DCHECK(message_factory != nullptr);
   ABSL_DCHECK(json != nullptr);
@@ -78,9 +78,9 @@ absl::Status BoolValue::ConvertToJson(
 
 absl::Status BoolValue::Equal(
     const Value& other,
-    absl::Nonnull<const google::protobuf::DescriptorPool*> descriptor_pool,
-    absl::Nonnull<google::protobuf::MessageFactory*> message_factory,
-    absl::Nonnull<google::protobuf::Arena*> arena, absl::Nonnull<Value*> result) const {
+    const google::protobuf::DescriptorPool* absl_nonnull descriptor_pool,
+    google::protobuf::MessageFactory* absl_nonnull message_factory,
+    google::protobuf::Arena* absl_nonnull arena, Value* absl_nonnull result) const {
   ABSL_DCHECK(descriptor_pool != nullptr);
   ABSL_DCHECK(message_factory != nullptr);
   ABSL_DCHECK(arena != nullptr);

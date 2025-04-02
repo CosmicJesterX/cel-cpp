@@ -39,10 +39,10 @@ namespace {
 using ::cel::well_known_types::AsVariant;
 using ::cel::well_known_types::GetValueReflectionOrDie;
 
-absl::Nonnull<google::protobuf::Arena*> MessageArenaOr(
-    absl::Nonnull<const google::protobuf::Message*> message,
-    absl::Nonnull<google::protobuf::Arena*> or_arena) {
-  absl::Nullable<google::protobuf::Arena*> arena = message->GetArena();
+google::protobuf::Arena* absl_nonnull MessageArenaOr(
+    const google::protobuf::Message* absl_nonnull message,
+    google::protobuf::Arena* absl_nonnull or_arena) {
+  google::protobuf::Arena* absl_nullable arena = message->GetArena();
   if (arena == nullptr) {
     arena = or_arena;
   }
@@ -51,8 +51,8 @@ absl::Nonnull<google::protobuf::Arena*> MessageArenaOr(
 
 }  // namespace
 
-Value ParsedJsonValue(absl::Nonnull<const google::protobuf::Message*> message,
-                      absl::Nonnull<google::protobuf::Arena*> arena) {
+Value ParsedJsonValue(const google::protobuf::Message* absl_nonnull message,
+                      google::protobuf::Arena* absl_nonnull arena) {
   const auto reflection = GetValueReflectionOrDie(message->GetDescriptor());
   const auto kind_case = reflection.GetKindCase(*message);
   switch (kind_case) {
